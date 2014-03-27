@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	  if @user.save
 	    session[:user_id] = @user.id
 	 
-		redirect_to "/set_profile"
+		render "set_profile"
 	    #redirect_to "/edit_profile"
 	    #redirect_to root_url, notice: "Thank you for signing up!"
 	  else
@@ -31,6 +31,8 @@ class UsersController < ApplicationController
 	def set_profile
 		@user = current_user
 		@profile = @user.build_profile
+
+
 	end
 
 	def change_password
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
 		@user = current_user
 
 	    if @user.update(user_params)
-	    	redirect_to root_url, notice: "Password Changed"
+	    	redirect_to root_url, notice: "Profile Updated"
 	      # Handle a successful update.
 	    else
 	      render 'change_password'
