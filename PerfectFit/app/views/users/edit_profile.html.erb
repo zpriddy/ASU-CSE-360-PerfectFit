@@ -1,0 +1,16 @@
+<%= form_for (@user)  do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.fields_for :profile do |builder| %>
+    <%= render "profile_fields", :f => builder %>
+  <% end %>
+  <div class="actions"><%= f.submit "Sign Up" %></div>
+<% end %>
