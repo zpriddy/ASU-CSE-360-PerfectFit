@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
 	has_one :profile
+	has_many :activities
 
 	accepts_nested_attributes_for :profile
 
 	attr_accessor :updating_password
+	attr_accessor :user_first_name
 
 	attr_accessible :email, :password, :password_confirmation, :profile_attributes
 
@@ -19,5 +21,9 @@ class User < ActiveRecord::Base
 
 	def should_validate_password?
   		updating_password || new_record?
+	end
+
+	def user_has_first_name?
+		self.profile 
 	end
 end

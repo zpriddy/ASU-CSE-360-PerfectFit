@@ -1,4 +1,6 @@
 PerfectFit::Application.routes.draw do
+  resources :activities
+
   resources :profiles
 
   #get "sessions/new"
@@ -9,13 +11,18 @@ PerfectFit::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
 
+
    
   resources :users
   resources :sessions
   match '/home',    to: 'static_pages#home',    via: 'get'
+  match '/dashboard',    to: 'users#dashboard',    via: 'get'
   match '/change_password', to: 'users#change_password', via: 'get'
-  match '/edit_profile', to: 'users#edit_profile', via: 'get'
+  match '/change_email', to: 'users#change_email', via: 'get'
+  match '/edit_profile', to: 'profiles#edit_profile', via: 'get'
+  match '/show_profile', to: 'profiles#show_profile', via: 'get'
   match '/set_profile', to: 'users#set_profile', via: 'get'
+  match '/log_activity', to: 'activities#log_activity', via: 'get'
   root to: 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

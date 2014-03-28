@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
 	
 	
-	before_filter :authorize, only: [:update, :change_password]
+	before_filter :authorize, only: [ :update, :change_password]
 
 	def new
 	  @user = User.new
-	  
-
 	  @user.updating_password = true
-	  
-	  
 	end
 
 	def create
@@ -19,7 +15,7 @@ class UsersController < ApplicationController
 	  if @user.save
 	    session[:user_id] = @user.id
 	 
-		render "set_profile"
+		redirect_to "/set_profile"
 	    #redirect_to "/edit_profile"
 	    #redirect_to root_url, notice: "Thank you for signing up!"
 	  else
@@ -31,30 +27,28 @@ class UsersController < ApplicationController
 	def set_profile
 		@user = current_user
 		@profile = @user.build_profile
-
-
 	end
 
 	def change_password
-
 		@user = current_user
 		@user.updating_password = true
-
 	end
 
-	def edit_profile
-
+	def change_email
 		@user = current_user
+		@user.updating_password = true
+	end
 
-
-		
+	def dashboard
+		@user = current_user
+		@activities = @user.activities
 	end
 
 	def update
 		@user = current_user
 
 	    if @user.update(user_params)
-	    	redirect_to root_url, notice: "Profile Updated"
+	    	redirect_to '/show_profile', notice: "Account Updated"
 	      # Handle a successful update.
 	    else
 	      render 'change_password'
