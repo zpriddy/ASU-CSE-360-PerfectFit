@@ -26,4 +26,20 @@ class User < ActiveRecord::Base
 	def user_has_first_name?
 		self.profile 
 	end
+
+	def chart_data(start = 3.weeks.ago)
+	  total_calories = calories_by_day(start)
+	  (start.to_date..Date.today).map do |date|
+	    {
+	      date: date,
+	      calories: total_calories[date] || 0,
+	    }
+	  end
+	end
+
+	def calories_by_day(start)
+	  self.activities.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, sum(calories) as total_calories").each_with_object({}) do |activities, calories|
+	    calories[activities.date.to_date] = activities.total_calories
+	  end
+end
 end
