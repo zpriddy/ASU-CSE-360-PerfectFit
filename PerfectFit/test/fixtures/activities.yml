@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  date: 2014-03-27 23:50:43
+  activity_type: MyString
+  duration: 1
+  calories: 1
+  distance: 1
+  steps: 1
+  floors: 1
+  laps: 1
+  mood: MyString
+  notes: MyText
+
+two:
+  user_id: 1
+  date: 2014-03-27 23:50:43
+  activity_type: MyString
+  duration: 1
+  calories: 1
+  distance: 1
+  steps: 1
+  floors: 1
+  laps: 1
+  mood: MyString
+  notes: MyText

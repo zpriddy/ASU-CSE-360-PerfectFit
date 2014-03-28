@@ -1,0 +1,39 @@
+<h1> Profile </h1>
+<p>
+  <strong>First name:</strong>
+  <%= @user.profile.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.profile.last_name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @user.profile.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @user.profile.gender %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @user.profile.weight %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @user.profile.zipcode %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @user.profile.birthday %>
+</p>
+
+<p>
+
+<%= link_to 'Edit', "/edit_profile" %>

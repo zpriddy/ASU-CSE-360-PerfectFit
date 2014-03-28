@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @activity.user_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @activity.date %>
+</p>
+
+<p>
+  <strong>Activity type:</strong>
+  <%= @activity.activity_type %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @activity.duration %>
+</p>
+
+<p>
+  <strong>Calories:</strong>
+  <%= @activity.calories %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @activity.distance %>
+</p>
+
+<p>
+  <strong>Steps:</strong>
+  <%= @activity.steps %>
+</p>
+
+<p>
+  <strong>Floors:</strong>
+  <%= @activity.floors %>
+</p>
+
+<p>
+  <strong>Laps:</strong>
+  <%= @activity.laps %>
+</p>
+
+<p>
+  <strong>Mood:</strong>
+  <%= @activity.mood %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @activity.notes %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', '/dashboard' %>
