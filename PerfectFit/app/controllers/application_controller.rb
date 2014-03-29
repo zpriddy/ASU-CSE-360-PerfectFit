@@ -2,8 +2,14 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  around_filter :profile_time_zone, if: :current_name
 
   private
+
+	def profile_time_zone(&block)
+	  Time.use_zone(current_user.profile.time_zone, &block)
+	end	
+	helper_method :profile_time_zone
 
 	def current_user
 	  @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
@@ -13,7 +19,7 @@ class ApplicationController < ActionController::Base
 
 
 	def current_name
-		@current_name ||= current_user.profile.first_name if cookies[:auth_token]
+		@current_name ||= current_user.profile if cookies[:auth_token]
 	end
 	helper_method :current_name
 
@@ -23,7 +29,7 @@ class ApplicationController < ActionController::Base
 	helper_method :display_range
 
 	def user_age
-		now = Time.now.utc.to_date
+		now = Time.now.to_date
 		@user_age = now.year - current_user.profile.birthday.year - (current_user.profile.birthday.to_date.change(:year => now.year) > now ? 1 : 0)
 	end
 
