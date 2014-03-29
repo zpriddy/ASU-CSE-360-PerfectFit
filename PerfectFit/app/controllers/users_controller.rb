@@ -40,8 +40,10 @@ class UsersController < ApplicationController
 	end
 
 	def dashboard
+
 		@user = current_user
 		@activities = @user.activities
+		@user.display_time = Date.parse("#{params[:display]}")
 	end
 
 	def update

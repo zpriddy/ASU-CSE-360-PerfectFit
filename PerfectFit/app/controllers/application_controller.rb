@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
 	end
 	helper_method :current_name
 
+	def display_range
+		@display_range = :display_time
+	end
+	helper_method :display_range
+
 	def authorize
 	  redirect_to login_url, alert: "Not authorized" if current_user.nil?
 	end

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
 	attr_accessor :updating_password
 	attr_accessor :user_first_name
+	attr_accessor :display_time
 
 	attr_accessible :email, :password, :password_confirmation, :profile_attributes
 
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
 		self.profile 
 	end
 
-	def chart_data(start = 3.weeks.ago)
+	def chart_data(start = @display_time)
 	  total_calories = calories_by_day(start)
 	  (start.to_date..Date.today).map do |date|
 	    {

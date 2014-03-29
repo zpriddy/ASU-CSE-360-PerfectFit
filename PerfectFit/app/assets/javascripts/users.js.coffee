@@ -8,4 +8,4 @@ jQuery ->
     xkey: 'date'
     ykeys: ['calories']
     labels: ['Calories']
-    preUnits: 'Cal'
+    postUnits: ' Cal'

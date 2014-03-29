@@ -2,8 +2,11 @@
 <%= link_to 'Add New Activity', '/log_activity' %><br>
 <%= link_to 'Edit Profile', '/edit_profile' %>
 
-
-
+<h1> Calories Graph </h1>
+<div style="height:400px; width:50%">
+<%= link_to "1 Week", "/dashboard?display=#{1.weeks.ago}" %> <%= link_to "1 Month", "/dashboard?display=#{1.month.ago}" %> <%= link_to "3 Month", "/dashboard?display=#{3.month.ago}" %>
+<%= content_tag :div, "", id: "calories_chart", data: {calories: @user.chart_data} %>
+</div>
 
 
 
@@ -29,7 +32,7 @@
   </thead>
 
   <tbody>
-    <% @user.activities.where('date >= ?', 1.week.ago).each do |activity| %>
+    <% @user.activities.where('date >= ?', 2.week.ago).each do |activity| %>
       <tr>
         <td><%= activity.date %></td>
         <td><%= activity.activity_type %></td>
