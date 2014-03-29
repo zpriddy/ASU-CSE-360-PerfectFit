@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	@@SWE = false
+	@@SWE = true
 	
 	before_filter :authorize, only: [ :update, :change_password]
 
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 	def set_profile
 		@@SWE = true
 		@user = current_user
+		@@SWE = true
 		@profile = @user.build_profile
 		@@SWE = true
 		
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
 	end
 
 	def change_password
+		@@SWE = false
 		@user = current_user
 		@user.updating_password = true
 		@@SWE = false
@@ -43,13 +45,14 @@ class UsersController < ApplicationController
 	end
 
 	def change_email
+		@@SWE = false
 		@user = current_user
 		@user.updating_password = true
 		@@SWE = false
 	end
 
 	def dashboard
-
+		@@SWE = false
 		@user = current_user
 		@activities = @user.activities
 		@user.display_time = Date.parse("#{params[:display]}")
@@ -58,7 +61,6 @@ class UsersController < ApplicationController
 
 	def update
 		@user = current_user
-
 	    if @user.update(user_params)
 	    	if @@SWE
 	    		@user.send_welcome_message
