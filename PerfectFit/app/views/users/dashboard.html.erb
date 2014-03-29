@@ -1,7 +1,7 @@
 <h1> Dashboard </h1>
 <%= link_to 'Add New Activity', '/log_activity' %><br>
 <%= link_to 'Edit Profile', '/edit_profile' %>
-
+Age is: <%= user_age %>
 <h1> Calories Graph </h1>
 <div style="height:400px; width:50%">
 <%= link_to "1 Week", "/dashboard?display=#{1.weeks.ago}" %> <%= link_to "1 Month", "/dashboard?display=#{1.month.ago}" %> <%= link_to "3 Month", "/dashboard?display=#{3.month.ago}" %>

@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
 	end
 	helper_method :display_range
 
+	def user_age
+		now = Time.now.utc.to_date
+		@user_age = now.year - current_user.profile.birthday.year - (current_user.profile.birthday.to_date.change(:year => now.year) > now ? 1 : 0)
+		#@user_age = (Date.today.year - current_user.profile.birthday.year)
+	end
+	helper_method :user_age
+
 	def authorize
 	  redirect_to login_url, alert: "Not authorized" if current_user.nil?
 	end

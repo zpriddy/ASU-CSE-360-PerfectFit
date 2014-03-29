@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     respond_to do |format|
-      if @profile.update(profile_params)
+      if @current_user.profile.update(profile_params)
         format.html { redirect_to '/show_profile', notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -66,11 +66,14 @@ class ProfilesController < ApplicationController
   def show_profile
     @user = current_user
     @profile = @user.profile
+    @profile.age = user_age
+
   end
 
   def edit_profile
     @user = current_user
     @profile = @user.profile
+    @profile.age = user_age
 
 
   end
