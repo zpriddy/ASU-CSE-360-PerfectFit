@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 	@@SWE = true
 	
-	before_filter :authorize, only: [ :update, :change_password]
+	before_filter :authorize, only: [ :set_profile, :dashboard, :update, :change_password]
 
 	def new
 	  @@SWE = true
 	  @user = User.new
 	  @user.updating_password = true
+	  @user.save
 	  @@SWE = true
 	end
 
@@ -54,8 +55,13 @@ class UsersController < ApplicationController
 	def dashboard
 		@@SWE = false
 		@user = current_user
+		user = current_user
 		@activities = @user.activities
-		@user.display_time = Date.parse("#{params[:display]}")
+		if(params[:display])
+			user.display_time = Date.parse("#{params[:display]}")
+		else
+			user.display_time = 1.weeks.ago
+		end
 		@@SWE = false
 	end
 
