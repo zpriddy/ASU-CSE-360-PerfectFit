@@ -6,12 +6,14 @@ class ApplicationController < ActionController::Base
   private
 
 	def current_user
-	  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+	  @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+	  #@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
 	helper_method :current_user
 
+
 	def current_name
-		@current_name ||= current_user.profile.first_name if session[:user_id]
+		@current_name ||= current_user.profile.first_name if cookies[:auth_token]
 	end
 	helper_method :current_name
 
@@ -23,8 +25,8 @@ class ApplicationController < ActionController::Base
 	def user_age
 		now = Time.now.utc.to_date
 		@user_age = now.year - current_user.profile.birthday.year - (current_user.profile.birthday.to_date.change(:year => now.year) > now ? 1 : 0)
-		#@user_age = (Date.today.year - current_user.profile.birthday.year)
 	end
+
 	helper_method :user_age
 
 	def authorize

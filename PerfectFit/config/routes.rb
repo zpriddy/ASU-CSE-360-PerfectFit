@@ -1,4 +1,5 @@
 PerfectFit::Application.routes.draw do
+  get "password_resets/new"
   resources :activities
 
   resources :profiles
@@ -15,6 +16,7 @@ PerfectFit::Application.routes.draw do
    
   resources :users
   resources :sessions
+  resources :password_resets
   match '/home',    to: 'static_pages#home',    via: 'get'
   match '/dashboard',    to: 'users#dashboard',    via: 'get'
   match '/change_password', to: 'users#change_password', via: 'get'
