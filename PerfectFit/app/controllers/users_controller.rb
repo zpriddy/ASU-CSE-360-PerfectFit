@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 	  @@SWE = true
 	  @user = User.new
 	  @user.updating_password = true
-	  @user.save
 	  @@SWE = true
 	end
 

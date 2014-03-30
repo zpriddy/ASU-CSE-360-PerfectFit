@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	attr_accessible :email, :password, :password_confirmation, :profile_attributes
 
 	before_save { self.email = email.downcase }
+	
 	before_create { generate_token(:auth_token) }
 	  
 	validates_uniqueness_of :email, :if => :should_validate_password?
