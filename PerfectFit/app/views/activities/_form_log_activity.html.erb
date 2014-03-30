@@ -19,8 +19,8 @@
     <%= f.datetime_select :date %>
   </div>
   <div class="field">
-    <%= f.label :activity_type %><br>
-    <%= f.text_field :activity_type %>
+    <%= f.label :activity_type %>*<br>
+    <%= f.text_field :activity_type, :required => true %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>

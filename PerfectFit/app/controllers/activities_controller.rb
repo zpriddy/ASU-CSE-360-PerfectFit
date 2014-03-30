@@ -68,7 +68,7 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to activities_url }
+      format.html { redirect_to '/dashboard' }
       format.json { head :no_content }
     end
   end
