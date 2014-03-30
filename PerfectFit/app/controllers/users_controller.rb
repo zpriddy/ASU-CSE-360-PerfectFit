@@ -65,6 +65,14 @@ class UsersController < ApplicationController
 		@@SWE = false
 	end
 
+	def home_page
+		if(current_user)
+			redirect_to "/dashboard"
+		else
+			redirect_to "/home"
+		end
+	end
+
 	def update
 		@user = current_user
 	    if @user.update(user_params)
