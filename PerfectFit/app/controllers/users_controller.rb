@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 	    		redirect_to "/dashboard?display=#{1.weeks.ago}", notice: "Welcome!"
 	    	end
 	    else
-	    		render 'change_email'
+	    		render 'change_email_password'
 	          	
 	    end
 	end
