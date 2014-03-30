@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-	@@SWE = true
+	@@SWE = false
 	
-	before_filter :authorize, only: [ :set_profile, :dashboard, :update, :change_password]
+	before_filter :authorize, only: [ :change_email, :set_profile, :dashboard, :update, :change_password]
 
 	def new
 	  @@SWE = true
 	  @user = User.new
 	  @user.updating_password = true
+	  @user.updating_email = true
+
 	  @@SWE = true
 	end
 
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
 	  @user = User.new(params[:user])
 	  @@SWE = true
 	  @user.updating_password = true
+	  @user.updating_email = true
 	  if @user.save
 	    cookies.permanent[:auth_token] = @user.auth_token
 	    @@SWE = true
@@ -36,18 +39,10 @@ class UsersController < ApplicationController
 		
 	end
 
-	def change_password
+
+	def change_email_password
 		@@SWE = false
 		@user = current_user
-		@user.updating_password = true
-		@@SWE = false
-
-	end
-
-	def change_email
-		@@SWE = false
-		@user = current_user
-		@user.updating_password = true
 		@@SWE = false
 	end
 
@@ -73,17 +68,18 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		
 		@user = current_user
 	    if @user.update(user_params)
-	    	if @@SWE
+	    	if @user.activities.any?
+	    		redirect_to '/show_profile', notice: "Account Updated"
+	    	else
 	    		@user.send_welcome_message
 	    		redirect_to "/dashboard?display=#{1.weeks.ago}", notice: "Welcome!"
-	    	else
-	    		redirect_to '/show_profile', notice: "Account Updated"
 	    	end
-	      # Handle a successful update.
 	    else
-	      render 'change_password'
+	    		render 'change_email'
+	          	
 	    end
 	end
 	    #
