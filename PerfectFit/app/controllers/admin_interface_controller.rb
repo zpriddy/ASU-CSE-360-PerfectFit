@@ -1,0 +1,2 @@
+class AdminInterfaceController < ApplicationController
+end
