@@ -51,6 +51,8 @@ class UsersController < ApplicationController
 		@user = current_user
 		user = current_user
 		@activities = @user.activities
+		@healths = @user.healths
+		@user.target = @user.profile.weight || nil
 		if(params[:display])
 			user.display_time = Date.parse("#{params[:display]}")
 		else

@@ -1,4 +1,6 @@
 PerfectFit::Application.routes.draw do
+  resources :healths
+
   get "password_resets/new"
   resources :activities
 

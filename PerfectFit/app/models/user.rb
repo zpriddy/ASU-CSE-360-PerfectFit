@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_one :profile
 	has_many :activities
+	has_many :healths
 
 	accepts_nested_attributes_for :profile
 
@@ -9,6 +10,7 @@ class User < ActiveRecord::Base
 	attr_accessor :user_first_name
 	attr_accessor :display_time
 	attr_accessor :send_welcome_email
+	attr_accessor :target
 
 	attr_accessible :email, :password, :password_confirmation, :profile_attributes
 
@@ -72,6 +74,28 @@ class User < ActiveRecord::Base
 	  self.activities.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, sum(calories) as total_calories").each_with_object({}) do |activities, calories|
 	    calories[activities.date.to_date] = activities.total_calories
 	 end
+	end
+
+	 	def healths_chart_data(start = @display_time)
+	  total_weight = weight_by_day(start)
+	  
+	  (start.to_date..Date.today).map do |date|
+	    {
+	      date: date,
+	      weight: total_weight[date] || nil,
+	      
+
+	    }
+
+	  end
+	end
+
+	def weight_by_day(start)
+		 self.healths.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, avg(weight) as total_weight").each_with_object({}) do |healths, weight|
+		weight[healths.date.to_date] = healths.total_weight
+	 end
+
+
 
 
 end

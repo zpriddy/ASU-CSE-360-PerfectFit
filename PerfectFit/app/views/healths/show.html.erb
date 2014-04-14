@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @health.user_id %>
+</p>
+
+<p>
+  <strong>Log type:</strong>
+  <%= @health.log_type %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @health.weight %>
+</p>
+
+<p>
+  <strong>Food:</strong>
+  <%= @health.food %>
+</p>
+
+<p>
+  <strong>Calories:</strong>
+  <%= @health.calories %>
+</p>
+
+<p>
+  <strong>Bpm:</strong>
+  <%= @health.BPM %>
+</p>
+
+<p>
+  <strong>Bp:</strong>
+  <%= @health.BP %>
+</p>
+
+<p>
+  <strong>Bmi:</strong>
+  <%= @health.BMI %>
+</p>
+
+<p>
+  <strong>Log date:</strong>
+  <%= @health.date %>
+</p>
+
+<p>
+  <strong>Sleep:</strong>
+  <%= @health.sleep %>
+</p>
+
+<p>
+  <strong>Cholesterol:</strong>
+  <%= @health.cholesterol %>
+</p>
+
+<%= link_to 'Edit', edit_health_path(@health) %> |
+<%= link_to 'Back', healths_path %>

@@ -9,3 +9,16 @@ jQuery ->
     ykeys: ['calories']
     labels: ['Calories']
     postUnits: ' Cal'
+
+ 
+ jQuery ->
+  Morris.Line
+    element: 'weight_chart'
+    data: $('#weight_chart').data('weight')
+    goals: [$('#weight_chart').data('target')]
+    goalStrokeWidth: 2
+    goalLineColors: ['Orange']
+    xkey: 'date'
+    ykeys: ['weight']
+    labels: ['weight']
+    postUnits: ' lbs'

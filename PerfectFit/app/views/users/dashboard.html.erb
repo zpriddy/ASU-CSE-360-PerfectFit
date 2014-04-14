@@ -1,13 +1,28 @@
 <h1> Dashboard </h1>
 <%= link_to 'Add New Activity', '/log_activity' %><br>
 <%= link_to 'Edit Profile', '/edit_profile' %>
-<h1> Calories Graph </h1>
-<div style="height:400px; width:50%">
-<%= link_to "1 Week", "/dashboard?display=#{1.weeks.ago}" %> <%= link_to "1 Month", "/dashboard?display=#{1.month.ago}" %> <%= link_to "3 Month", "/dashboard?display=#{3.month.ago}" %>
-<%= content_tag :div, "", id: "calories_chart", data: {calories: @user.chart_data} %>
-</div>
 
 
+<table width ="100%"
+  <tr>
+    <td width="50%">
+      <div style="height:400px">
+      <h1> Calories Graph </h1>
+      <%= link_to "1 Week", "/dashboard?display=#{1.weeks.ago}" %> <%= link_to "1 Month", "/dashboard?display=#{1.month.ago}" %> <%= link_to "3 Month", "/dashboard?display=#{3.month.ago}" %>
+      <%= content_tag :div, "", id: "calories_chart", data: {calories: @user.chart_data} %>
+      </div>
+    </td>
+    <td>
+      <div style="height:400px">
+        <h1> Weight Graph </h1>
+        <br>
+      <%= content_tag :div, "", id: "weight_chart", data: {weight: @user.healths_chart_data, target: @user.target} %>
+      </div>
+    </td>
+  </tr>
+</table>
+<br>
+<br>
 
 
 <h1>Listing activities in the last weeek</h1>

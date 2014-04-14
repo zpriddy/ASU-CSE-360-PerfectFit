@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  log_type: MyString
+  weight: 1
+  food: MyString
+  calories: 1
+  BPM: 1
+  BP: MyString
+  BMI: MyString
+  date: 2014-04-06 16:41:07
+  sleep: 2014-04-06 16:41:07
+  cholesterol: MyString
+
+two:
+  user_id: 
+  log_type: MyString
+  weight: 1
+  food: MyString
+  calories: 1
+  BPM: 1
+  BP: MyString
+  BMI: MyString
+  date: 2014-04-06 16:41:07
+  sleep: 2014-04-06 16:41:07
+  cholesterol: MyString

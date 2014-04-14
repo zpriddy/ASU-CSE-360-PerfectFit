@@ -1,0 +1,61 @@
+<%= form_for(@health) do |f| %>
+  <% if @health.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@health.errors.count, "error") %> prohibited this health from being saved:</h2>
+
+      <ul>
+      <% @health.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :log_type %><br>
+    <%= f.text_field :log_type %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :food %><br>
+    <%= f.text_field :food %>
+  </div>
+  <div class="field">
+    <%= f.label :calories %><br>
+    <%= f.number_field :calories %>
+  </div>
+  <div class="field">
+    <%= f.label :BPM %><br>
+    <%= f.number_field :BPM %>
+  </div>
+  <div class="field">
+    <%= f.label :BP %><br>
+    <%= f.text_field :BP %>
+  </div>
+  <div class="field">
+    <%= f.label :BMI %><br>
+    <%= f.text_field :BMI %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :sleep %><br>
+    <%= f.time_select :sleep %>
+  </div>
+  <div class="field">
+    <%= f.label :cholesterol %><br>
+    <%= f.text_field :cholesterol %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
