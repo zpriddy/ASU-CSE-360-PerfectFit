@@ -14,17 +14,19 @@
 		  <%= link_to "Profile", "/show_profile" %>
 		  <%= link_to "Dashboard", "/dashboard" %>
 		  <%= link_to "Log Out", logout_path %>
+		  <% if current_user.admin != false %>
+			<%= link_to "Admin Panel", "/users" %>
+			<% end %>
 		<% elsif current_user %>
 		  Logged in as <%= current_user.email %>.
 		  <%= link_to "Log Out", logout_path %>
 		<% else %>
 		  <%= link_to "Sign Up", signup_path %> or
 		  <%= link_to "Log In", login_path %>
-		</div>
-
 		<% end %>
-
 		
+
+		</div>
 
 
 

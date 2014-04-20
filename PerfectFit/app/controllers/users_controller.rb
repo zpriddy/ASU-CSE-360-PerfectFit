@@ -1,7 +1,39 @@
 class UsersController < ApplicationController
 	@@SWE = false
 	
-	before_filter :authorize, only: [ :change_email, :set_profile, :dashboard, :update, :change_password]
+	before_filter :authorize, only: [ :change_email, :set_profile, :dashboard, :update, :change_password, :distroy, :set_admin]
+
+
+
+	def destroy
+	    User.find(params[:id]).destroy
+	    flash[:success] = "User deleted."
+	    redirect_to users_url
+  	end
+
+  	def set_admin
+  		if(current_user.admin)
+			@user = User.find(params[:id]) #.update(params[:profile.first_name => "ADMIN HAHA"])
+			if(@user.admin)
+				@user.update_attributes(admin: false)
+				flash[:error] = "User Set As Non-Admin."
+			else
+				@user.update_attributes(admin: true)
+				flash[:error] = "User Set As Admin."
+			end
+			#@user.profile.first_name = "ADMIN"
+		
+			
+	    	redirect_to users_url
+	    else
+	    	if(current_user)
+				redirect_to "/dashboard"
+			else
+				redirect_to "/home"
+			end
+		end
+
+	end
 
 	def new
 	  @@SWE = true
@@ -17,9 +49,14 @@ class UsersController < ApplicationController
 	  @@SWE = true
 	  @user.updating_password = true
 	  @user.updating_email = true
+	
+	  
 	  if @user.save
 	    cookies.permanent[:auth_token] = @user.auth_token
 	    @@SWE = true
+	      if (@user.id = 1)
+	  	@user.update_attributes(admin: true)
+	  end
 		redirect_to "/set_profile"
 	    #redirect_to "/edit_profile"
 	    #redirect_to root_url, notice: "Thank you for signing up!"
@@ -38,6 +75,23 @@ class UsersController < ApplicationController
 		
 		
 	end
+
+	def report
+		@user = current_user
+	end
+
+	def index
+    	@users = User.all
+    	if(current_user.admin)
+
+	    else
+	    	if(current_user)
+				redirect_to "/dashboard"
+			else
+				redirect_to "/home"
+			end
+		end
+  	end
 
 
 	def change_email_password
@@ -85,6 +139,18 @@ class UsersController < ApplicationController
 	    end
 	end
 	    #
+
+	def show
+		if(current_user.admin)
+	   		@user = User.find(params[:id])
+	   	else
+	    	if(current_user)
+				redirect_to "/dashboard"
+			else
+				redirect_to "/home"
+			end
+		end
+  	end
 	
 
  	private
@@ -92,7 +158,7 @@ class UsersController < ApplicationController
 
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :profile_attributes => [:first_name, :last_name, :age, :gender, :weight, :zipcode, :birthday, :user_id, :id, :time_zone])
+      params.require(:user).permit(:email, :password, :password_confirmation, :admin, :profile_attributes => [:first_name, :last_name, :age, :gender, :weight, :zipcode, :birthday, :user_id, :id, :time_zone])
     end
 
 

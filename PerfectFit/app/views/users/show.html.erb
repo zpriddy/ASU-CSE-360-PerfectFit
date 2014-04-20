@@ -1,6 +1,13 @@
-
 <h1> Profile </h1>
+<p>
+   <strong>Email Address:</strong>
+  <%= @user.email %>
+</p>
 
+<p>
+   <strong>Admin:</strong>
+  <%= @user.admin %>
+</p>
 
 <p>
   <strong>First name:</strong>
@@ -38,5 +45,3 @@
 </p>
 
 <p>
-
-<%= link_to 'Edit', "/edit_profile" %>

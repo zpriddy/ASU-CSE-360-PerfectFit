@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	attr_accessor :send_welcome_email
 	attr_accessor :target
 
-	attr_accessible :email, :password, :password_confirmation, :profile_attributes
+	attr_accessible :email, :password, :password_confirmation, :profile_attributes, :admin
 
 	before_save { self.email = email.downcase }
 	

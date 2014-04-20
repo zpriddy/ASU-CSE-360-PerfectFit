@@ -1,4 +1,11 @@
 PerfectFit::Application.routes.draw do
+resources :users do
+  member do
+    get :set_admin
+    put :set_admin
+  end
+end
+
   resources :healths
 
   get "password_resets/new"
@@ -15,6 +22,7 @@ PerfectFit::Application.routes.draw do
 
 
 
+
    
   resources :users
   resources :sessions
@@ -27,7 +35,9 @@ PerfectFit::Application.routes.draw do
   match '/edit_profile', to: 'profiles#edit_profile', via: 'get'
   match '/show_profile', to: 'profiles#show_profile', via: 'get'
   match '/set_profile', to: 'users#set_profile', via: 'get'
+   match '/report', to: 'users#report', via: 'get'
   match '/log_activity', to: 'activities#log_activity', via: 'get'
+
   root to: 'users#home_page'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
