@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
 body {
   background-color: #0066cc;
   font-family: Verdana, Helvetica, Arial;
@@ -31,7 +32,7 @@ a {
   overflow: hidden;
 }
 
-.container {
+#container {
   width: 85%;
   margin: 0 auto;
   background-color: #FFF;
@@ -40,7 +41,7 @@ a {
   margin-left:auto;
   margin-right:auto;
   position:relative;
-  top: 75px;
+  top: 90px;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -94,37 +95,33 @@ a {
 
 nav {
   background-color: #363636;
+  color: #fff;
   box-shadow: 0px 3px #cc0000;
-  color: #ffffff;
   display: block;
-  margin: 8px 22px 8px 22px;
   overflow: hidden;
   width: 100%; 
   position: fixed;
   z-index: 1;
   top: 0px;
-  left:0px;
+  left: 0px;
 }
 
 nav ul {
   margin: 0;
   padding: 0;
+  float:right;
+  color: #ffffff;
 }
 
   nav ul li {
+    color: #ffffff;
     display: inline-block;
     list-style-type: none;
-    
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s; 
+    float:left; 
   }
   
     nav > ul > li > a {
       color: #ffffff;
-      box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
       display: block;
       line-height: 45px;
       padding: 0 24px;
@@ -140,11 +137,6 @@ nav > ul > li > a > .caret {
   height: 0;
   width: 0;
   vertical-align: middle;
-  
-  -webkit-transition: color 0.1s linear;
-  -moz-transition: color 0.1s linear;
-  -o-transition: color 0.1s linear;
-    transition: color 0.1s linear; 
 }
 
 nav > ul > li:hover {
@@ -153,6 +145,7 @@ nav > ul > li:hover {
 
         nav > ul > li:hover > a {
           color: #ffffff;
+          background-color: #cc0000;
         }
 
         nav > ul > li:hover > a > .caret {
@@ -162,8 +155,6 @@ nav > ul > li:hover {
 nav > ul > li > div {
   background-color: #cc0000;
   border-top: 0;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
   display: none;
   margin: 0;
   opacity: 0;
@@ -171,12 +162,6 @@ nav > ul > li > div {
   width: 165px;
   visibility: hidden;
   z-index: 100;
-  
-  -webkit-transiton: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -ms-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  -transition: opacity 0.2s;
 }
 
   nav > ul > li > div ul > li {
@@ -197,6 +182,13 @@ nav > ul > li > div {
 
 nav > ul > li:hover > div {
   display: block;
-  opacity: 90%;
+  opacity: 1;
   visibility: visible;
+}
+
+#logo {
+  left:7px;
+  top:5px;
+  position:fixed;
+  z-index:2;
 }
