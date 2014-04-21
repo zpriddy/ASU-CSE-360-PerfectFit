@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  background-color: #0066cc;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: 85%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+  top: 90px;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+.error_messages p {
+  margin: 8px 10px;
+}
+
+.error_messages ul {
+  margin: 0;
+}
+
+nav {
+  background-color: #363636;
+  color: #fff;
+  box-shadow: 0px 3px #cc0000;
+  display: block;
+  overflow: hidden;
+  width: 100%; 
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  float:right;
+  color: #ffffff;
+}
+
+  nav ul li {
+    color: #ffffff;
+    display: inline-block;
+    list-style-type: none;
+    float:left; 
+  }
+  
+    nav > ul > li > a {
+      color: #ffffff;
+      display: block;
+      line-height: 45px;
+      padding: 0 24px;
+      text-decoration: none;
+    }
+
+nav > ul > li > a > .caret {
+  border-top: 4px solid #ffffff;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+  display: inline-block;
+  height: 0;
+  width: 0;
+  vertical-align: middle;
+}
+
+nav > ul > li:hover {
+          background-color: #cc0000;
+        }
+
+        nav > ul > li:hover > a {
+          color: #ffffff;
+          background-color: #cc0000;
+        }
+
+        nav > ul > li:hover > a > .caret {
+          border-top-color: #ffffff;
+        }
+
+nav > ul > li > div {
+  background-color: #cc0000;
+  border-top: 0;
+  display: none;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 165px;
+  visibility: hidden;
+  z-index: 100;
+}
+
+  nav > ul > li > div ul > li {
+    display: block;
+  }
+  
+    nav > ul > li > div ul > li > a {
+      color: #ffffff;
+      display: block;
+      padding: 12px 24px;
+      text-decoration: none;
+    }
+  
+  nav > ul > li > div ul > li:hover > a {
+    background-color: #ffffff;
+    color: #cc0000;
+  }
+
+nav > ul > li:hover > div {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#logo {
+  left:7px;
+  top:5px;
+  position:fixed;
+  z-index:2;
+}

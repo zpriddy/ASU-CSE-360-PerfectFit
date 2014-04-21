@@ -8,25 +8,35 @@
 </head>
 <body>
 	<div id="container">
-		<div id="user_header">
-		<% if current_name && current_name != nil %>
-		  Logged in as <%= current_user.profile.first_name %>.
-		  <%= link_to "Profile", "/show_profile" %>
-		  <%= link_to "Dashboard", "/dashboard" %>
-		  <%= link_to "Log Out", logout_path %>
-		  <% if current_user.admin != false %>
-			<%= link_to "Admin Panel", "/users" %>
-			<% end %>
-		<% elsif current_user %>
-		  Logged in as <%= current_user.email %>.
-		  <%= link_to "Log Out", logout_path %>
-		<% else %>
-		  <%= link_to "Sign Up", signup_path %> or
-		  <%= link_to "Log In", login_path %>
-		<% end %>
-		
-
+		<div id="logo">
+			<%= image_tag "PerfectFit_Logo.png" %>
 		</div>
+		<nav id="navigation">
+			<ul>
+				<% if current_user %>
+				<li><%= link_to "Profile", "/show_profile" %></li>
+				<div>
+					<ul>
+						<li><%= link_to "Edit Profile", "/edit_profile" %></li>
+					</ul>
+				</div>
+				<li><%= link_to "Dashboard", "/dashboard" %></li>
+				<div>
+					<ul>
+						<li><%= link_to "Add New Activity", "/log_activity" %></li>
+					</ul>
+				</div>
+				<li> <%= link_to "Log Out", logout_path %> </li>
+				<% else %>
+				<li> <%= link_to "Sign Up", signup_path %></li>
+				<li> <%= link_to "Log In", login_path %></li>
+			</ul>
+		</nav>
+	</div>
+
+		<% end %>
+
+		
 
 
 

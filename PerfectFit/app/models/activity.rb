@@ -3,6 +3,4 @@ class Activity < ActiveRecord::Base
 
 	attr_accessible :user_id, :date, :activity_type, :duration, :calories, :distance, :steps, :floors, :laps, :mood, :notes
 
-
-
 end
