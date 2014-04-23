@@ -15,3 +15,16 @@
 //= require raphael
 //= require morris
 //= require_tree .
+
+function display() {
+	// obtains the string from the selected option
+	var selected_option = document.getElementById('health_log_type').value;
+	
+	for (i=0; i<7; i++) {
+		if (i.toString().match(selected_option)) {
+			document.getElementById(i.toString()).style.display = 'block';
+		} else {
+			document.getElementById(i.toString()).style.display = 'none';
+		}
+	}
+}
