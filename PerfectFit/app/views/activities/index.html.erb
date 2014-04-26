@@ -5,40 +5,22 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Date</th>
       <th>Activity type</th>
       <th>Duration</th>
       <th>Calories</th>
-      <th>Distance</th>
-      <th>Steps</th>
-      <th>Floors</th>
-      <th>Laps</th>
-      <th>Mood</th>
-      <th>Notes</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Options</th>
     </tr>
   </thead>
 
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
-        <td><%= activity.user_id %></td>
         <td><%= activity.date %></td>
         <td><%= activity.activity_type %></td>
         <td><%= activity.duration %></td>
         <td><%= activity.calories %></td>
-        <td><%= activity.distance %></td>
-        <td><%= activity.steps %></td>
-        <td><%= activity.floors %></td>
-        <td><%= activity.laps %></td>
-        <td><%= activity.mood %></td>
-        <td><%= activity.notes %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', activity %> | <%= link_to 'Edit', edit_activity_path(activity) %> | <%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
