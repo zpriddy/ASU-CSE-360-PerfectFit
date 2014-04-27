@@ -130,7 +130,7 @@
             <tbody style="width:100%">
               <% @user.healths.where(log_type:  'Weight').where('date >= ?', @user.display_time).each do |health| %>
                 <tr>
-                 
+                  <td><center><%= health.date.to_time.strftime('%m/%e/%y at %l:%M %p') %></center></td>
                   <td ><center><%= health.weight %></center></td>
                   <td ><center><%= link_to 'Show', health %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
                 </tr>
