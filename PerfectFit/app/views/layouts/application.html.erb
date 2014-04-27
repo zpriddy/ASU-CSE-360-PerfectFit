@@ -6,13 +6,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
-	
+
 
 </head>
 
 <header>
 	<div id="logo">
-		<%= image_tag "PerfectFit_Logo.png" %>
+		<%= link_to (image_tag "PerfectFit_Logo.png"), "/"  %>
 	</div>
 	<nav>
 		<ul>
@@ -22,6 +22,7 @@
 				<% end %>
 			<li><%= link_to "Profile", "/show_profile" %></li>
 			<li><%= link_to "Dashboard", "/dashboard" %></li>
+			<li><%= link_to "Report", "/report" %></li>
 			<li><%= link_to "Healths", "/healths" %></li>
 			<li><%= link_to "Log Out", logout_path %></li>
 			<% else %>
