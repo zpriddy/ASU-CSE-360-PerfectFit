@@ -12,50 +12,53 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.hidden_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :log_type %><br>
-    <%= f.text_field :log_type %>
+    <p>
+    <div class="field">
+    Date:<br>
+    <%= f.datetime_select :date, { :class => 'date'}, :html_options => {size: 1} %>
   </div>
+  <p>
   <div class="field">
-    <%= f.label :weight %><br>
-    <%= f.number_field :weight %>
+    Health Indicator:<br>
+    <%= f.select :log_type, options_for_select(['Blood Pressure','Body Mass Index','Cholesterol','Heartrate','Meal','Sleep','Weight']), {:required => true, :prompt => 'Select new health indicator'}, {:onchange => "display()"} %>
   </div>
-  <div class="field">
-    <%= f.label :food %><br>
-    <%= f.text_field :food %>
-  </div>
-  <div class="field">
-    <%= f.label :calories %><br>
-    <%= f.number_field :calories %>
-  </div>
-  <div class="field">
-    <%= f.label :BPM %><br>
-    <%= f.number_field :BPM %>
-  </div>
-  <div class="field">
-    <%= f.label :BP %><br>
+  <p>
+   <div class="field" id="Blood Pressure" style="display: none">
+    Enter blood pressure:<br>
     <%= f.text_field :BP %>
   </div>
-  <div class="field">
-    <%= f.label :BMI %><br>
+  <div class="field" id="Body Mass Index" style="display: none">
+    Enter body mass index (BMI):<br>
     <%= f.text_field :BMI %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :sleep %><br>
-    <%= f.time_select :sleep %>
-  </div>
-  <div class="field">
-    <%= f.label :cholesterol %><br>
+    <div class="field" id="Cholesterol" style="display: none">
+    Enter cholesterol level:<br>
     <%= f.text_field :cholesterol %>
   </div>
+  <div class="field" id="Heartrate" style="display: none">
+    Enter heartbeats per minute (BPM):<br>
+    <%= f.number_field :BPM %>
+  </div>
+  <div class="field" id="Meal" style="display: none">
+    Enter food eaten:<br>
+    <%= f.text_field :food %>
+    <p>
+    Enter calories:<br>
+    <%= f.number_field :calories %>
+  </div>
+  <div class="field" id="Sleep" style="display: none">
+    Enter hours and minutes slept:<br>
+    <%= f.time_select :sleep %>
+  </div>
+  <div class="field" id="Weight" style="display: none">
+    Enter weight:<br>
+    <%= f.number_field :weight %>
+  </div>
+  <p>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <p></p>
 <% end %>

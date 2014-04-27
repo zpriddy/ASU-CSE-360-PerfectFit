@@ -1,5 +1,6 @@
 <h1> Dashboard </h1>
 <%= link_to 'Add New Activity', '/log_activity' %><br>
+<%= link_to 'Add New Health Indicator', new_health_path %><br>
 <%= link_to 'Edit Profile', '/edit_profile' %>
 
 
@@ -21,27 +22,20 @@
     </td>
   </tr>
 </table>
-<br>
+<br> 
+<p></p>
 <br>
 
 
-<h1>Listing activities in the last weeek</h1>
-<table>
+<h1>Listing activities from the last week</h1>
+<table align=center>
   <thead>
     <tr>
       <th>Date</th>
       <th>Activity type</th>
       <th>Duration</th>
       <th>Calories</th>
-      <th>Distance</th>
-      <th>Steps</th>
-      <th>Floors</th>
-      <th>Laps</th>
-      <th>Mood</th>
-      <th>Notes</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Options</th>
     </tr>
   </thead>
 
@@ -52,14 +46,7 @@
         <td><%= activity.activity_type %></td>
         <td><%= activity.duration %></td>
         <td><%= activity.calories %></td>
-        <td><%= activity.distance %></td>
-        <td><%= activity.steps %></td>
-        <td><%= activity.floors %></td>
-        <td><%= activity.laps %></td>
-        <td><%= activity.mood %></td>
-        <td><%= activity.notes %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', activity %> | <%= link_to 'Edit', edit_activity_path(activity) %> | <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -67,7 +54,7 @@
 
 <br>
 
-<%= link_to 'See More', 'activities#index' %>
+<%= link_to 'Show All', 'activities#index' %>
 
 
 <br>

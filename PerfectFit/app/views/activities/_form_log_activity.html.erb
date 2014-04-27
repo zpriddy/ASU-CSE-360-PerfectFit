@@ -20,7 +20,7 @@
   </div>
   <div class="field">
     <%= f.label :activity_type %>*<br>
-    <%= f.text_field :activity_type, :required => true %>
+    <%= f.select :activity_type, options_for_select(['Aerobics','Archery','Basketball','Baseball','Bicycling','Croquet','Gymnastics','Hiking','Hockey','Football','Jogging','Jump Rope','Lacrosse','Motorsports','Pilates','Polo','Racquetball','Rock Climbing','Rowing','Running','Skiing','Snowboarding','Skateboarding','Sleeping','Soccer','Swimming (leisure)','Swimming (strenuous)','Tennis','Track and Field','Volleyball','Walking','Weight-lifting','Yoga']), :required => true, :prompt => "Select Activity" %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
@@ -54,7 +54,9 @@
     <%= f.label :notes %><br>
     <%= f.text_area :notes %>
   </div>
+  <p>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <p></p>
 <% end %>

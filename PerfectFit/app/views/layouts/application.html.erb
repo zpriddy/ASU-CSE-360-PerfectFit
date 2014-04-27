@@ -6,34 +6,36 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-	<div id="container">
-		<div id="user_header">
-		<% if current_name && current_name != nil %>
-		  Logged in as <%= current_user.profile.first_name %>.
-		  <%= link_to "Profile", "/show_profile" %>
-		  <%= link_to "Dashboard", "/dashboard" %>
-		  <%= link_to "Log Out", logout_path %>
-		  <% if current_user.admin != false %>
-			<%= link_to "Admin Panel", "/users" %>
+
+<header>
+	<div id="logo">
+		<%= image_tag "PerfectFit_Logo.png" %>
+	</div>
+	<nav>
+		<ul>
+			<% if current_user %>
+				<% if current_user.admin %>
+				<li><%= link_to "Admin Panel", "/users" %></li>
+				<% end %>
+			<li><%= link_to "Profile", "/show_profile" %></li>
+			<li><%= link_to "Dashboard", "/dashboard" %></li>
+			<li><%= link_to "Healths", "/healths" %></li>
+			<li><%= link_to "Log Out", logout_path %></li>
+			<% else %>
+			<li><%= link_to "Sign Up", signup_path %></li>
+			<li><%= link_to "Log In", login_path %></li>
 			<% end %>
-		<% elsif current_user %>
-		  Logged in as <%= current_user.email %>.
-		  <%= link_to "Log Out", logout_path %>
-		<% else %>
-		  <%= link_to "Sign Up", signup_path %> or
-		  <%= link_to "Log In", login_path %>
-		<% end %>
+		</ul>
+	</nav>
 		
-
-		</div>
-
-
+</header>
 
 		<% flash.each do |name, msg| %> 
 		<%= content_tag :div, msg, :id => "flash_#{name}" %> 
 		<% end %> 
-		
+
+<body>
+<div id="container">		
 <%= yield %>
 </div>
 

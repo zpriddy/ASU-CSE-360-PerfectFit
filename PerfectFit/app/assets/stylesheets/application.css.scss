@@ -1,0 +1,187 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap.min
+ *= require_self
+ *= require_tree .
+ */
+
+ @import "bootstrap";
+
+body {
+  background-color: #06c;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 13px;
+  padding-top: 65px;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #06c;
+  text-decoration: underline;
+
+  &:hover {
+    color: #c00;
+    text-decoration: none;
+  }
+}
+
+h1 {
+  border-bottom: 1px solid #000;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: 85%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  top: 65px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+.error_messages p {
+  margin: 8px 10px;
+}
+
+.error_messages ul {
+  margin: 0;
+}
+
+select.date {
+  width: 50px;
+  border: 1px solid #06c;
+  background-color: #fff;
+}
+
+nav {
+  background-color: #363636;
+  color: #fff;
+  box-shadow: 0px 3px #c00;
+  display: block;
+  overflow: hidden;
+  width: 100%; 
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+      float:left; 
+
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+  
+      a {
+        color: #999;
+        display: block;
+        line-height: 45px;
+        padding: 0 24px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        }
+
+      &:hover {
+        background-color: #c00;
+
+        a {
+          color: #fff;
+          background-color: #c00;
+          text-decoration: none;
+          box-shadow: 0px 3px #fff;
+        }
+      }
+    }
+  }
+}
+
+#logo {
+  left:7px;
+  top:5px;
+  position:fixed;
+  z-index:2;
+}
+
+td {
+  padding-left: 5px;
+  padding-right: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  padding-left: 5px;
+  padding-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+}

@@ -20,7 +20,7 @@
   </div>
   <div class="field">
     <%= f.label :activity_type %><br>
-    <%= f.text_field :activity_type, :required => true %>
+    <%= f.select :activity_type, options_for_select(['Walking','Jogging','Running']) %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>

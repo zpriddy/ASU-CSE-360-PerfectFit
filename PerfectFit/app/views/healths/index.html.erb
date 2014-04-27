@@ -3,40 +3,18 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Log type</th>
-      <th>Weight</th>
-      <th>Food</th>
-      <th>Calories</th>
-      <th>Bpm</th>
-      <th>Bp</th>
-      <th>Bmi</th>
       <th>Log date</th>
-      <th>Sleep</th>
-      <th>Cholesterol</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Options</th>
     </tr>
   </thead>
 
   <tbody>
     <% @healths.each do |health| %>
       <tr>
-        <td><%= health.user_id %></td>
         <td><%= health.log_type %></td>
-        <td><%= health.weight %></td>
-        <td><%= health.food %></td>
-        <td><%= health.calories %></td>
-        <td><%= health.BPM %></td>
-        <td><%= health.BP %></td>
-        <td><%= health.BMI %></td>
         <td><%= health.date %></td>
-        <td><%= health.sleep %></td>
-        <td><%= health.cholesterol %></td>
-        <td><%= link_to 'Show', health %></td>
-        <td><%= link_to 'Edit', edit_health_path(health) %></td>
-        <td><%= link_to 'Destroy', health, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', health %> | <%= link_to 'Edit', edit_health_path(health) %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
