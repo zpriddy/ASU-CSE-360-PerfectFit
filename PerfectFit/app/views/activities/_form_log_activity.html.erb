@@ -24,7 +24,9 @@
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.number_field :duration %>
+        Enter Duration in hours and minutes:<br>
+    <%= f.number_field :hours, :size => 2 %> :
+    <%= f.number_field :minutes, :size => 2 %>
   </div>
   <div class="field">
     <%= f.label :calories %><br>

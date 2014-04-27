@@ -1,40 +1,236 @@
-<h1>Listing activities in the last weeek</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Activity type</th>
-      <th>Duration</th>
-      <th>Calories</th>
-      <th>Distance</th>
-      <th>Steps</th>
-      <th>Floors</th>
-      <th>Laps</th>
-      <th>Mood</th>
-      <th>Notes</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @user.activities.where('date >= ?', 2.week.ago).each do |activity| %>
-      <tr>
-        <td><%= activity.date %></td>
-        <td><%= activity.activity_type %></td>
-        <td><%= activity.duration %></td>
-        <td><%= activity.calories %></td>
-        <td><%= activity.distance %></td>
-        <td><%= activity.steps %></td>
-        <td><%= activity.floors %></td>
-        <td><%= activity.laps %></td>
-        <td><%= activity.mood %></td>
-        <td><%= activity.notes %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<h1> Report <em style="font-size:16pt"> <%= link_to "1 Week", "/report?display=#{1.weeks.ago}" %> <%= link_to "1 Month", "/report?display=#{1.month.ago}" %> <%= link_to "3 Month", "/report?display=#{3.month.ago}" %> <%= link_to "6 Month", "/report?display=#{6.month.ago}" %> <%= link_to "1 Year Ago", "/report?display=#{1.year.ago}" %> <%= link_to "Since Sign Up", "/report?display=#{@user.created_at}" %>          <em style="float:right"><a href="#" onclick="window.print();return false;">Print Me</a></em> </em></h1>
+
+
+
+<table>
+  <tr valign="top">
+    <td style="width:50%">
+      <div  style="width:100%">
+        <div  style="height:400px">
+          <h1> Calories Graph</h1>
+          <%= content_tag :div, "", id: "calories_chart", data: {calories: @user.chart_data} %>
+        </div>
+        
+        <div class="layer1">
+          <br>
+          <br>
+          <p class="heading">Heartrate</p>
+          <div class="content">
+          <table align=center>
+            <thead>
+              <tr>
+                
+                <th>Date </th>
+                <th>Heartrate</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @user.healths.where(log_type:  'Heartrate').where('date >= ?', @user.display_time).each do |health| %>
+                <tr>
+                 
+                  <td><center><%= health.date.to_time.strftime('%m/%e/%y') %></center></td>
+                  <td><center><%= health.BPM %></center></td>
+                  <td><center><%= link_to 'Show', health %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+        <div class="layer1">
+          <br>
+          <br>
+          <p class="heading">Cholesterol</p>
+          <div class="content">
+          <table align=center>
+            <thead>
+              <tr>
+                
+                <th>Date </th>
+                <th>Cholesterol</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @user.healths.where(log_type:  'Cholesterol').where('date >= ?', @user.display_time).each do |health| %>
+                <tr>
+                 
+                  <td><center><%= health.date.to_time.strftime('%m/%e/%y') %></center></td>
+                  <td><center><%= health.cholesterol %></center></td>
+                  <td><center><%= link_to 'Show', health %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+        <div class="layer1">
+          <br>
+          <br>
+          <p class="heading"> Activities </p>
+          <div class="content">
+          <table align=center>
+            <thead>
+              <tr>
+                <th>Date & Time</th>
+                <th>Activity type</th>
+                <th>Duration</th>
+                <th>Calories</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @user.activities.where('date >= ?', @user.display_time).each do |activity| %>
+                <tr>
+                  <td><center><%= activity.date.to_time.strftime('%m/%e/%y at %l:%M %p') %></center></td>
+                  <td><center><%= activity.activity_type %></center></td>
+                  <td><center><%= activity.duration_text %></center></td>
+                  <td><center><%= activity.calories %></center></td>
+                  <td><center><%= link_to 'Show', activity %>  | <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+
+      </div>
+    </td>
+
+    <td>
+      <div  style="width:100%">
+        <div  style="height:400px">
+          <h1> Weight</h1>
+          <%= content_tag :div, "", id: "weight_chart", data: {weight: @user.healths_chart_data, target: @user.target} %>
+        </div>
+        
+          <div class="layer1">
+          <br>
+          <br>
+          <p class="heading"> Weight </p>
+          <div class="content">
+          <table style="width:100%">
+            <thead>
+              <tr>
+                
+                <th>Date & Time</th>
+                <th>Weight</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody style="width:100%">
+              <% @user.healths.where(log_type:  'Weight').where('date >= ?', @user.display_time).each do |health| %>
+                <tr>
+                 
+                  <td ><center><%= health.weight %></center></td>
+                  <td ><center><%= link_to 'Show', health %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="layer1">
+          <br>
+          <br>
+          <p class="heading"> Meals </p>
+          <div class="content">
+          <table>
+            <thead>
+              <tr>
+                
+                <th>Date & Time</th>
+                <th>Meal</th>
+                <th>Calories</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @user.healths.where(log_type:  'Meal').where('date >= ?', @user.display_time).each do |health| %>
+                <tr>
+                 
+                  <td><center><%= health.date.to_time.strftime('%m/%e/%y at %l:%M %p') %></center></td>
+                  <td><center><%= health.food %></center></td>
+                  <td><center><%= health.calories %></center></td>
+                  <td><center><%= link_to 'Show', health %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+
+        <div class="layer1">
+          <br>
+          <br>
+          <p class="heading">Sleep</p>
+          <div class="content">
+          <table align=center>
+            <thead>
+              <tr>
+                
+                <th>Date </th>
+                <th>Duration</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @user.healths.where(log_type:  'Sleep').where('date >= ?', @user.display_time).each do |health| %>
+                <tr>
+                 
+                  <td><center><%= health.date.to_time.strftime('%m/%e/%y') %></center></td>
+                  <td><center><%= health.sleep_text %></center></td>
+                  <td><center><%= link_to 'Show', health %> | <%= link_to 'Delete', health, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+
+    </td>
+  </tr>
 </table>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<%= link_to 'Show All', 'activities#index' %>
+
+
+<br>
+
+
+<br>

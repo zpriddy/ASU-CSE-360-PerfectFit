@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420044345) do
+ActiveRecord::Schema.define(version: 20140427082937) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140420044345) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "duration_text"
   end
 
   create_table "healths", force: true do |t|
@@ -39,10 +40,11 @@ ActiveRecord::Schema.define(version: 20140420044345) do
     t.string   "BP"
     t.string   "BMI"
     t.datetime "date"
-    t.time     "sleep"
+    t.integer  "sleep"
     t.string   "cholesterol"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sleep_text"
   end
 
   create_table "profiles", force: true do |t|

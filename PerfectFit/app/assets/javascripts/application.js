@@ -30,3 +30,17 @@ function display() {
 		}
 	}
 }
+
+
+	
+	jQuery(document).ready(function() {
+	  jQuery(".content").show();
+	  //toggle the componenet with class msg_body
+	  jQuery(".heading").click(function()
+	  {
+	    jQuery(this).next(".content").slideToggle(500);
+	  });
+	});
+
+
+

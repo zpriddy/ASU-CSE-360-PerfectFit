@@ -77,7 +77,18 @@ class UsersController < ApplicationController
 	end
 
 	def report
+		@@SWE = false
 		@user = current_user
+		user = current_user
+		@activities = @user.activities
+		@healths = @user.healths
+		@user.target = @user.profile.weight || nil
+		if(params[:display])
+			user.display_time = Date.parse("#{params[:display]}")
+		else
+			user.display_time = 1.weeks.ago
+		end
+		@@SWE = false
 	end
 
 	def index

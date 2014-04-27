@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: f0316e55d6a46794e56d5e636ea838c9eaef34cb
+  specs:
+    datetimepicker-rails (0.0.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,6 +59,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     multi_json (1.9.2)
     passenger (4.0.40)
       daemon_controller (>= 1.2.0)
@@ -124,8 +132,10 @@ DEPENDENCIES
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (= 3.1.1)
   coffee-rails (= 4.0.1)
+  datetimepicker-rails!
   jbuilder (= 1.0.2)
   jquery-rails (< 3.0.0)
+  momentjs-rails (~> 2.5.0)
   passenger
   pg (= 0.15.1)
   protected_attributes

@@ -13,7 +13,8 @@
  *= require_tree .
  */
 
- @import "bootstrap";
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
 
 body {
   background-color: #06c;
@@ -176,12 +177,33 @@ td {
   padding-left: 5px;
   padding-right: 10px;
   text-align: left;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 th {
   padding-left: 5px;
   padding-right: 10px;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: top;
 }
+
+.layer1 {
+margin: 0;
+padding: 0;
+width: 100%;
+}
+
+.heading {
+margin: 1px;
+color: #999;
+padding: 3px 10px;
+cursor: pointer;
+position: relative;
+background-color:#06c;
+font-size: 16pt;
+}
+.content {
+padding: 5px 10px;
+background-color:#fafafa;
+}
+p { padding: 5px 0; }

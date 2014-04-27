@@ -19,12 +19,14 @@
     <%= f.datetime_select :date %>
   </div>
   <div class="field">
-    <%= f.label :activity_type %><br>
-    <%= f.select :activity_type, options_for_select(['Walking','Jogging','Running']) %>
+    <%= f.label :activity_type %>*<br>
+    <%= f.select :activity_type, options_for_select(['Aerobics','Archery','Basketball','Baseball','Bicycling','Croquet','Gymnastics','Hiking','Hockey','Football','Jogging','Jump Rope','Lacrosse','Motorsports','Pilates','Polo','Racquetball','Rock Climbing','Rowing','Running','Skiing','Snowboarding','Skateboarding','Sleeping','Soccer','Swimming (leisure)','Swimming (strenuous)','Tennis','Track and Field','Volleyball','Walking','Weight-lifting','Yoga']), :required => true, :prompt => "Select Activity" %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.number_field :duration %>
+        Enter Duration in hours and minutes:<br>
+    <%= f.number_field :hours, :size => 2 %> :
+    <%= f.number_field :minutes, :size => 2 %>
   </div>
   <div class="field">
     <%= f.label :calories %><br>
@@ -54,7 +56,9 @@
     <%= f.label :notes %><br>
     <%= f.text_area :notes %>
   </div>
+  <p>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <p></p>
 <% end %>

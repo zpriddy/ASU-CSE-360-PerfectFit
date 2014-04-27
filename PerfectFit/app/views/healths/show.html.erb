@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @health.user_id %>
-</p>
+
 
 <p>
   <strong>Log type:</strong>
@@ -42,12 +39,12 @@
 
 <p>
   <strong>Log date:</strong>
-  <%= @health.date %>
+  <%= @health.date.strftime('%m/%e/%y at %l:%M %p') %>
 </p>
 
 <p>
   <strong>Sleep:</strong>
-  <%= @health.sleep %>
+  <%= @health.sleep_text %>
 </p>
 
 <p>
@@ -56,4 +53,4 @@
 </p>
 
 <%= link_to 'Edit', edit_health_path(@health) %> |
-<%= link_to 'Back', healths_path %>
+<%= link_to_function "Back", "history.back()" %>

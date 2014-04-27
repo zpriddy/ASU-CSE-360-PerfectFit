@@ -50,7 +50,9 @@
   </div>
   <div class="field" id="Sleep" style="display: none">
     Enter hours and minutes slept:<br>
-    <%= f.time_select :sleep %>
+    <%= f.number_field :hours, :size => 2 %> :
+    <%= f.number_field :minutes, :size => 2 %>
+    
   </div>
   <div class="field" id="Weight" style="display: none">
     Enter weight:<br>
