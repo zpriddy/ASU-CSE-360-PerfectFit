@@ -1,6 +1,6 @@
 PerfectFit::Application.configure do
 
-  config.action_mailer.default_url_options = { :host => "asutracker.redxns.com:3000" }
+  config.action_mailer.default_url_options = { :host => "perfectfit.redxns.com" }
   config.action_mailer.delivery_method = :smtp
 
     config.action_mailer.perform_deliveries = true
