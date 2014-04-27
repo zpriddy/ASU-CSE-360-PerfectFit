@@ -20,12 +20,13 @@
 function display() {
 	// obtains the string from the selected option
 	var selected_option = document.getElementById('health_log_type').value;
-	
-	for (i=1; i<=7; i++) {
-		if (i.toString().match(selected_option)) {
-			document.getElementById(i.toString()).style.display = 'block';
+	var options_list = new Array("Blood Pressure","Body Mass Index","Cholesterol","Heartrate","Meal","Sleep","Weight")
+
+	for (i=0; i<7; i++) {
+		if (options_list[i].match(selected_option)) {
+			document.getElementById(options_list[i]).style.display = 'block';
 		} else {
-			document.getElementById(i.toString()).style.display = 'none';
+			document.getElementById(options_list[i]).style.display = 'none';
 		}
 	}
 }

@@ -22,37 +22,37 @@
   <p>
   <div class="field">
     Health Indicator:<br>
-    <%= f.select :log_type, options_for_select([['Blood Pressure',1],['Body Mass Index',2],['Cholesterol',3],['Heartrate (BPM)',4],['Meal',5],['Sleep',6],['Weight',7]]), {:required => true, :prompt => 'Select new health indicator'}, {:onchange => "display()"} %>
+    <%= f.select :log_type, options_for_select(['Blood Pressure','Body Mass Index','Cholesterol','Heartrate','Meal','Sleep','Weight']), {:required => true, :prompt => 'Select new health indicator'}, {:onchange => "display()"} %>
   </div>
   <p>
-   <div class="field" id="1" style="display: none">
+   <div class="field" id="Blood Pressure" style="display: none">
     Enter blood pressure:<br>
     <%= f.text_field :BP %>
   </div>
-  <div class="field" id="2" style="display: none">
+  <div class="field" id="Body Mass Index" style="display: none">
     Enter body mass index (BMI):<br>
     <%= f.text_field :BMI %>
   </div>
-    <div class="field" id="3" style="display: none">
+    <div class="field" id="Cholesterol" style="display: none">
     Enter cholesterol level:<br>
     <%= f.text_field :cholesterol %>
   </div>
-  <div class="field" id="4" style="display: none">
-    Enter heartbeats per minute:<br>
+  <div class="field" id="Heartrate" style="display: none">
+    Enter heartbeats per minute (BPM):<br>
     <%= f.number_field :BPM %>
   </div>
-  <div class="field" id="5" style="display: none">
+  <div class="field" id="Meal" style="display: none">
     Enter food eaten:<br>
     <%= f.text_field :food %>
     <p>
     Enter calories:<br>
     <%= f.number_field :calories %>
   </div>
-  <div class="field" id="6" style="display: none">
+  <div class="field" id="Sleep" style="display: none">
     Enter hours and minutes slept:<br>
     <%= f.time_select :sleep %>
   </div>
-  <div class="field" id="7" style="display: none">
+  <div class="field" id="Weight" style="display: none">
     Enter weight:<br>
     <%= f.number_field :weight %>
   </div>
@@ -60,4 +60,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <p></p>
 <% end %>
