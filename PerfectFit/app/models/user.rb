@@ -84,13 +84,15 @@ class User < ActiveRecord::Base
 	 end
 	end
 
-	 	def healths_chart_data(start = @display_time)
+	 def healths_chart_data(start = @display_time)
 	  total_weight = weight_by_day(start)
+	  avg_bmi = bmi_by_day(start)
 	  
 	  (start.to_date..Date.today).map do |date|
 	    {
 	      date: date,
 	      weight: total_weight[date] || nil,
+	      bmi: avg_bmi[date] || nil,
 	      
 
 	    }
@@ -99,12 +101,20 @@ class User < ActiveRecord::Base
 	end
 
 	def weight_by_day(start)
-		 self.healths.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, avg(weight) as total_weight").each_with_object({}) do |healths, weight|
-		weight[healths.date.to_date] = healths.total_weight
+		self.healths.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, avg(weight) as total_weight").each_with_object({}) do |healths, weight|
+			weight[healths.date.to_date] = healths.total_weight
+	 	end
 	 end
 
 
+	 def bmi_by_day(start)
+		self.healths.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, avg(BMI) as avg_bmi").each_with_object({}) do |healths, bmi|
+			bmi[healths.date.to_date] = healths.avg_bmi
+		end
+	end
 
 
-end
+
+
+
 end

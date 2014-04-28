@@ -7,13 +7,17 @@ class Activity < ActiveRecord::Base
 	attr_accessor :minutes 
 	attr_accessor :total_time 
 
-	before_save :set_duration
+	before_save :set_duration, :if => lambda{self.hours.to_i > 0 || self.minutes.to_i > 0}
 
 
 	def set_duration
-		total_time = (self.hours.to_i * 60) + self.minutes.to_i
-		self.duration = total_time
-		distance_of_time_in_hours_and_minutes(Time.now+total_time*60, Time.now)
+
+				total_time = (self.hours.to_i * 60) + self.minutes.to_i
+				
+					self.duration = total_time
+					distance_of_time_in_hours_and_minutes(Time.now+total_time*60, Time.now)
+				
+		
 	end
 
 	def distance_of_time_in_hours_and_minutes(from_time, to_time)

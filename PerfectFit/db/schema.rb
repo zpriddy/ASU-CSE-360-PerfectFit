@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427082937) do
+ActiveRecord::Schema.define(version: 20140428051348) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140427082937) do
     t.integer  "calories"
     t.integer  "BPM"
     t.string   "BP"
-    t.string   "BMI"
+    t.integer  "BMI",         limit: 255
     t.datetime "date"
     t.integer  "sleep"
     t.string   "cholesterol"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140427082937) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "time_zone"
+    t.integer  "height"
   end
 
   create_table "users", force: true do |t|

@@ -7,7 +7,8 @@ class Health < ActiveRecord::Base
 	attr_accessor :minutes 
 	attr_accessor :total_time 
 
-	before_save :set_sleep
+	before_save :set_sleep, :if => lambda{self.hours.to_i > 0 || self.minutes.to_i > 0}
+	before_save :set_bmi, :if => lambda{self.weight.to_i > 0}
 
 
 	def set_sleep
@@ -30,6 +31,17 @@ class Health < ActiveRecord::Base
 	  words << "#{minutes} #{minutes == 1 ? 'minute' : 'minutes' }"
 
 	  self.sleep_text = words
+	end
+
+		
+
+
+	def set_bmi
+		 
+		 
+		total_bmi = self.weight.to_f / (self.user.profile.height.to_i**2 ) * 703
+		self.BMI = total_bmi
+
 	end
 
 

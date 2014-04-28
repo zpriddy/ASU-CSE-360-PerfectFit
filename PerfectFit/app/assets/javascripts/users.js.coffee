@@ -20,7 +20,8 @@ jQuery ->
     goalStrokeWidth: 2
     goalLineColors: ['Orange']
     xkey: 'date'
-    ykeys: ['weight']
-    labels: ['weight']
-    postUnits: ' lbs'
+    ykeys: ['weight', 'bmi']
+    labels: ['Weight', 'BMI']
+    lineColors: ['blue','red']
+
 

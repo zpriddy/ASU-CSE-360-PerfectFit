@@ -17,6 +17,8 @@ class HealthsController < ApplicationController
   def new
     @health = Health.new
     @health.user_id = current_user.id
+    @user = current_user
+    @profile = current_user.profile
   end
 
   # GET /healths/1/edit
@@ -27,7 +29,9 @@ class HealthsController < ApplicationController
   # POST /healths.json
   def create
     @health = Health.new(health_params)
+    @user = current_user
 
+    @profile = current_user.profile
     respond_to do |format|
       if @health.save
         format.html { redirect_to "/dashboard", notice: 'Health was successfully created.' }
@@ -43,6 +47,8 @@ class HealthsController < ApplicationController
   # PATCH/PUT /healths/1.json
   def update
     @health.user_id = current_user
+    @user = current_user
+    @profile = current_user.profile
     respond_to do |format|
       if @health.update(health_params)
         format.html { redirect_to "/dashboard", notice: 'Health was successfully updated.' }
