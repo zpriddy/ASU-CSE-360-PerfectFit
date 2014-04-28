@@ -28,10 +28,10 @@
     <%= f.label "Target Weight" %><br>
     <%= f.number_field :weight %>
   </div>
-  <div class="field">
-    Height:
-    <%= f.number_field :feet, :size => 2, :required => true %>'
-    <%= f.number_field :inches, :size => 2, :required => true %>"
+    <div class="field">
+    <%= f.label "Height" %><br>
+    <%= f.number_field :feet, :size => 2,  :required => true %>'
+    <%= f.number_field :inches, :size => 2,  :required => true %>"
   </div>
   <div class="field">
   <%= f.label :time_zone %><br />
@@ -45,7 +45,9 @@
     <%= f.label :birthday %><br>
     <%= f.date_select :birthday, :end_year => 1900, :start_year => Date.today.year %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="field">
+    <%= f.hidden_field :user_id %>
   </div>
+
 <% end %>
