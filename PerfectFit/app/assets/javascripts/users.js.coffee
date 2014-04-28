@@ -6,9 +6,10 @@ jQuery ->
     element: 'calories_chart'
     data: $('#calories_chart').data('calories')
     xkey: 'date'
-    ykeys: ['calories']
-    labels: ['Calories']
+    ykeys: ['calories','calories_in']
+    labels: ['Calories Out', 'Calories In' ]
     postUnits: ' Cal'
+    lineColors: ['red','green']
 
  
  jQuery ->
@@ -22,3 +23,4 @@ jQuery ->
     ykeys: ['weight']
     labels: ['weight']
     postUnits: ' lbs'
+

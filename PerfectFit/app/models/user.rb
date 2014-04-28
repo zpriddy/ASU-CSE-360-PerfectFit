@@ -62,10 +62,12 @@ class User < ActiveRecord::Base
 
 	def chart_data(start = @display_time)
 	  total_calories = calories_by_day(start)
+	  total_calories_in = calories_in_by_day(start)
 	  (start.to_date..Date.today).map do |date|
 	    {
 	      date: date,
 	      calories: total_calories[date] || 0,
+	      calories_in: total_calories_in[date] || 0,
 	    }
 	  end
 	end
@@ -73,6 +75,12 @@ class User < ActiveRecord::Base
 	def calories_by_day(start)
 	  self.activities.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, sum(calories) as total_calories").each_with_object({}) do |activities, calories|
 	    calories[activities.date.to_date] = activities.total_calories
+	 end
+	end
+
+		def calories_in_by_day(start)
+	  self.healths.where(date: start.beginning_of_day..Time.zone.now ).group("date(date)").select("date, sum(calories) as total_calories").each_with_object({}) do |healths, calories|
+	    calories[healths.date.to_date] = healths.total_calories
 	 end
 	end
 
