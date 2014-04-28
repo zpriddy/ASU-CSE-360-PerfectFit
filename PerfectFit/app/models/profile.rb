@@ -24,3 +24,4 @@ class Profile < ActiveRecord::Base
 
 
 end
+#ADD
