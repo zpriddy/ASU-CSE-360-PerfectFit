@@ -9,7 +9,7 @@ class Profile < ActiveRecord::Base
 
 	attr_accessor :feet
 	attr_accessor :inches 
-	attr_accessor :total_height
+	#attr_accessor :total_height
 	attr_accessor :total_bmi
 
 	before_save :set_height, :if => lambda{self.feet.to_i > 0 || self.inches.to_i > 0}
