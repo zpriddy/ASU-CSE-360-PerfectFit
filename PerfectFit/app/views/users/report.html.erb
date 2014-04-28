@@ -1,6 +1,18 @@
 
-<h1> Report <em style="font-size:16pt"> <%= link_to "1 Week", "/report?display=#{1.weeks.ago}" %> <%= link_to "1 Month", "/report?display=#{1.month.ago}" %> <%= link_to "3 Month", "/report?display=#{3.month.ago}" %> <%= link_to "6 Month", "/report?display=#{6.month.ago}" %> <%= link_to "1 Year Ago", "/report?display=#{1.year.ago}" %> <%= link_to "Since Sign Up", "/report?display=#{@user.created_at}" %>          <em style="float:right"><a href="#" onclick="window.print();return false;">Print Me</a></em> </em></h1>
-
+<h1 style=""> 
+  <p style="display:inline;float:left"> Report       </p>    
+ <div class="layer2" style="display:inline">
+<p class="heading2" style="display:inline; float:left; margin:10px"><%= link_to "1 Week", "/report?display=#{1.weeks.ago}" %></p>
+<p class="heading2" style="display:inline; float:left; margin:10px"><%= link_to "1 Month", "/report?display=#{1.month.ago}" %></p>
+<p class="heading2" style="display:inline; float:left; margin:10px"><%= link_to "3 Month", "/report?display=#{3.month.ago}" %></p>
+<p class="heading2" style="display:inline; float:left; margin:10px"><%= link_to "6 Month", "/report?display=#{6.month.ago}" %></p>
+<p class="heading2" style="display:inline; float:left; margin:10px"><%= link_to "1 Year Ago", "/report?display=#{1.year.ago}" %></p>
+<p class="heading2" style="display:inline; float:left; margin:10px"><%= link_to "Since Sign Up", "/report?display=#{@user.created_at}" %></p>
+<p class="heading2" style="display:inline;float:right; margin:10px"><a href="#" onclick="window.print();return false;">Print Me</a></p>
+</div>
+</h1>
+<br>
+<h1> </h1>
 
 
 <table>
@@ -15,7 +27,7 @@
         <div class="layer1">
           <br>
           <br>
-          <p class="heading">Heartrate</p>
+          <p class="heading" title="Click to hide or show">Heartrate</p>
           <div class="content">
           <table style="width:100%">
             <thead>
@@ -41,10 +53,10 @@
         </div>
         </div>
 
-        <div class="layer1">
+        <div class="layer1" >
           <br>
           <br>
-          <p class="heading">Cholesterol</p>
+          <p class="heading" title="Click to hide or show">Cholesterol</p>
           <div class="content">
           <table style="width:100%">
             <thead>
@@ -73,7 +85,7 @@
         <div class="layer1">
           <br>
           <br>
-          <p class="heading"> Activities </p>
+          <p class="heading" title="Click to hide or show"> Activities </p>
           <div class="content">
           <table style="width:100%">
             <thead>
@@ -115,7 +127,7 @@
           <div class="layer1">
           <br>
           <br>
-          <p class="heading"> Weight </p>
+          <p class="heading" title="Click to hide or show"> Weight </p>
           <div class="content">
           <table style="width:100%">
             <thead>
@@ -142,7 +154,7 @@
         <div class="layer1">
           <br>
           <br>
-          <p class="heading"> Meals </p>
+          <p class="heading" title="Click to hide or show"> Meals </p>
           <div class="content">
           <table style="width:100%">
             <thead>
@@ -174,7 +186,7 @@
         <div class="layer1">
           <br>
           <br>
-          <p class="heading">Sleep</p>
+          <p class="heading" title="Click to hide or show">Sleep</p>
           <div class="content">
           <table style="width:100%">
             <thead>
@@ -204,33 +216,3 @@
     </td>
   </tr>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br>
-<br>
-<br>
-<%= link_to 'Show All', 'activities#index' %>
-
-
-<br>
-
-
-<br>

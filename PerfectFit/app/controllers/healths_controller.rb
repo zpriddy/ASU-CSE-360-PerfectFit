@@ -30,7 +30,7 @@ class HealthsController < ApplicationController
 
     respond_to do |format|
       if @health.save
-        format.html { redirect_to @health, notice: 'Health was successfully created.' }
+        format.html { redirect_to "/dashboard", notice: 'Health was successfully created.' }
         format.json { render action: 'show', status: :created, location: @health }
       else
         format.html { render action: 'new' }
@@ -45,7 +45,7 @@ class HealthsController < ApplicationController
     @health.user_id = current_user
     respond_to do |format|
       if @health.update(health_params)
-        format.html { redirect_to @health, notice: 'Health was successfully updated.' }
+        format.html { redirect_to "/dashboard", notice: 'Health was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,7 +59,7 @@ class HealthsController < ApplicationController
   def destroy
     @health.destroy
     respond_to do |format|
-      format.html { redirect_to healths_url }
+      format.html { redirect_to "/dashboard" }
       format.json { head :no_content }
     end
   end
