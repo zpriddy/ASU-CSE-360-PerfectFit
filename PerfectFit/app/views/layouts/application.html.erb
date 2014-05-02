@@ -1,3 +1,9 @@
+<% if false %>
+This page is rendered for all pages throughout the website unless overridden (which we do not do). The main feature coded here is the navigation bar, which is formatted in the stylesheets. Certain links will not show based on whether the user is logged in or not and whether they are an admin or not.
+
+<%= yield %> is the tag that is a placeholder for the content of each individual page. Therefore, because it is enclosed by the "container" div, that is how we get everything to appear in a white box centered on the page.
+<% end %>
+
 <!DOCTYPE html>
 <html>
 <head>

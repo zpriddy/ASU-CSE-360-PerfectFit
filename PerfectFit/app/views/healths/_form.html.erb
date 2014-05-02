@@ -1,3 +1,10 @@
+<% if false %>
+Like when a user adds a new activity, this form if rendered when a user adds a new health indicator or edits a current one. Because this is a view, we only concern ourselves with how the form will look on the page.
+
+The various fields for entering data are hidden/shown depending on the option selected in the dropdown menu. A JavaScript function is responsible for this.
+<% end %>
+
+
 <%= form_for(@health) do |f| %>
   <% if @health.errors.any? %>
     <div id="error_explanation">
