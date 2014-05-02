@@ -1,3 +1,7 @@
+<% if false %>
+This is the form that is rendered when a user wants to add a new activity. The user has a number of activities to choose from in the dropdown menu, and a number of extra data that they can fill out with fields. This is a view, so it is only concerned with the content displayed on the webpage.
+<% end %>
+
 <%= form_for(@activity) do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
